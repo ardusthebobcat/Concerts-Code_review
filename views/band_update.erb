@@ -31,14 +31,31 @@
   <button>Submit </button>
 </form>
 
-<!--
-  #show band details regardless
+<HR width="100%" size="3">
 
-  #Dynamic labels?
-  <label>Name: -% band.name %-  | [text box to enter new name] [UPDATE NAME]
-  <label>Description: -% band.Description %-  | [text box to enter new descr] [UPDATE DESCRIPTION]
-  <label>Popular Album: -% band.album %-  | [text box to enter new album] [UPDATE ALBUM]
-
-  #redirect with new details, show success message %property% has been updated!
-
--->
+<div style="float: left; width: 45%;" >
+  <u>Current Venues:</u><br>
+  <% if @band.venues.any?() %>
+    <span style="font-size: 15px;">
+      <ul>
+        <% @band.venues.each() do |venue| %>
+          <li> <%= venue.name %> -  <%= venue.city %>,<%= venue.state %></li>
+        <% end %>
+      </ul>
+    </span>
+  <% else %>
+    <span style="font-size: 15px;">This band has not played at any venues yet. <br>:( </span>
+  <% end %>
+</div>
+<div style="float: right; width: 45%;">
+  <u>Available Venues:</u> <br>
+  <% if @venues.any?() %>
+    <form action="/update/<%= @band.id %>/band_venues" method="post">
+      <input name="_method" type="hidden" method="patch">
+        <% @venues.each do |venue| %>
+          <input type="checkbox" name="venues_checkbox[]" value="<%= venue.id %>"><span style="font-size: 15px;"> <%= venue.name %> - <%= venue.city %>, <%= venue.state %> </span> <br>
+        <% end %>
+      <button> Add Venues </button>
+    </form>
+  <% end %>
+</div>

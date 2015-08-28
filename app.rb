@@ -39,6 +39,7 @@ end
 
 get('/update_band/:id') do
   @band = Band.find(params.fetch("id"))
+  @venues = Venue.all()
   erb(:band_update)
 end
 
@@ -70,6 +71,21 @@ post('/update_band/:id/album') do
 
   erb(:band_update)
 end
+
+post('/update/:id/band_venues') do
+  @band = Band.find(params.fetch("id"))
+  venues_checkbox = params.fetch("venues_checkbox")
+binding.pry
+  venues_checkbox.each() do |selected|
+    previous_venues = @band.venues
+    previous_venues.push(Venue.find(selected.to_i()))
+    @band.update({:venues => previous_venues})
+  end
+  @band
+  @venues = Venue.all()
+  erb(:band_update)
+end
+
 #========== End Update Routes ==========#
 
 ######################### VENUE ROUTES #########################
