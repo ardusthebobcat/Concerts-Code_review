@@ -25,7 +25,7 @@
     <h2> Bands List: </h2>
     <ul>
       <% @bands.each() do |band| %>
-        <li><a href="/update_band/<%= band.id %>"> <%= band.name() %>   </a>-  <%= band.album %>  -  <%= band.description %>  <span style="float: right;"><a href="/delete/<%= band.id %>"> Delete </a> </span></li>
+        <li><a href="/update_band/<%= band.id %>"> <%= band.name() %>   </a>-  <%= band.album %>  -  <%= band.description %>  <span style="float: right;"><a href="/band/delete/<%= band.id %>"> Delete </a> </span></li>
       <% end %>
     </ul>
   </div>

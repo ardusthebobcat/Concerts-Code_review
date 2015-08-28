@@ -1,0 +1,29 @@
+<h1> Venue Page </h1>
+
+<div class = "add_venue_form">
+  <form action="/add_venue" method="post">
+    <label for="name"> Venue Name: </label>
+    <input type="text" name="name" placeholder="venue name"> <br>
+
+    <label for="city"> City: </label>
+    <input type="text" name="city" placeholder="venue city"><br>
+
+    <label for="state"> State: </label>
+    <input type="text" name="state" maxlength = "2" placeholder="venue state (2-letter code)"><br>
+    <br>
+    <button> Add this Venue</button>
+  </form>
+</div>
+
+<% if @venues.any?() %>
+  <div class="venue_output">
+    <h2> Venues List: </h2>
+    <ul>
+      <% @venues.each() do |venue| %>
+      <li><%= venue.name() %>  -  <%= venue.city %>  -  <%= venue.state %>  <span style="float: right;"><a href="/venue/delete/<%= venue.id %>"> Delete </a> </span></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <p> Deathklok has played at and destroyed every venue. Come back when we've built more venues. </p>
+<% end %>

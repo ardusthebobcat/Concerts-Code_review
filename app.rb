@@ -42,7 +42,7 @@ get('/update_band/:id') do
   erb(:band_update)
 end
 
-get('/delete/:id') do
+get('/band/delete/:id') do
   delete_band = Band.find(params.fetch("id"))
   delete_band.destroy()
 
@@ -71,3 +71,19 @@ post('/update_band/:id/album') do
   erb(:band_update)
 end
 #========== End Update Routes ==========#
+
+######################### VENUE ROUTES #########################
+post('/add_venue') do
+  new_venue = Venue.create({:name => params.fetch("name"), :city => params.fetch("city"), :state => params.fetch("state")})
+  @venues = Venue.all()
+
+  erb(:venues)
+end
+
+get('/venue/delete/:id') do
+  delete_venue = Venue.find(params.fetch("id"))
+  delete_venue.destroy()
+
+  @venues = Venue.all()
+  erb(:venues)
+end
