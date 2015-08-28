@@ -1,0 +1,44 @@
+<h2> Band update page <h2>
+
+<form>
+  <label> ID: <%= @band.id %> (you cant change this) </label>
+</form>
+
+<form action="/update_band/<%=@band.id %>/name" method="post">
+  <input name="_method" type="hidden" method="patch">
+
+  <label for="name">Name: <%= @band.name %></label>
+  <input type="text" name="name" placeholder = "Band Name">
+
+  <button>Submit </button>
+</form>
+
+<form action="/update_band/<%= @band.id %>/description" method="post">
+  <input name="_method" type="hidden" method="patch">
+
+  <label for="">Description: <%= @band.description %> </label>
+  <input type="text" name="description" placeholder="Description">
+
+  <button>Submit </button>
+</form>
+
+<form action="/update_band/<%= @band.id %>/album" method="post">
+  <input name="_method" type="hidden" method="patch">
+
+  <label for="">Album: <%= @band.album %> </label>
+  <input type="text" name="album" placeholder="Album">
+
+  <button>Submit </button>
+</form>
+
+<!--
+  #show band details regardless
+
+  #Dynamic labels?
+  <label>Name: -% band.name %-  | [text box to enter new name] [UPDATE NAME]
+  <label>Description: -% band.Description %-  | [text box to enter new descr] [UPDATE DESCRIPTION]
+  <label>Popular Album: -% band.album %-  | [text box to enter new album] [UPDATE ALBUM]
+
+  #redirect with new details, show success message %property% has been updated!
+
+-->

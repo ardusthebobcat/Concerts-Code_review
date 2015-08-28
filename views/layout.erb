@@ -1,0 +1,30 @@
+<html>
+<head>
+  <title> Concerts Page</title>
+  <style>
+  nav a {
+    margin: 0 10px;
+  }
+
+  .add_band_form {
+    background-color: #888888;
+  }
+
+  .bands_output {
+    background-color: #707070;
+    padding: 0 15 0 15px;
+  }
+
+  </style>
+</head>
+<body>
+  <header><h1> $_$ Page Header Here! @_@ <h1></header>
+  <nav>
+    <a href="/"> Home</a>
+    <a href="/all_bands"> Bands </a>
+    <a href="/all_venues"> Venues </a>
+  </nav>
+  <%= yield %>
+
+</body>
+</html>

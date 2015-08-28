@@ -1,0 +1,39 @@
+<br>
+<% if @add_a_band == true %>
+  <div class = "add_band_form">
+    <form action="/add_band" method="post">
+      <label for="name"> Band Name: </label>
+      <input type="text" name="name" placeholder="band name"> <br>
+
+      <label for="album"> Popular Album: </label>
+      <input type="text" name="album" placeholder="band album"><br>
+
+      <label for="description"> Band description: </label>
+      <input type="text" name="description" placeholder="band description"><br>
+
+      <button> Add this band</button>
+    </form>
+  </div>
+<% else %>
+  <!-- for debuging add_band_toggle -->
+  Error occurred: @add_a_band == "<%= @add_a_band %>"
+
+<% end %>
+
+<% if @bands.any?() %>
+  <div class="bands_output">
+    <h2> Bands List: </h2>
+    <ul>
+      <% @bands.each() do |band| %>
+        <li><a href="/update_band/<%= band.id %>"> <%= band.name() %>   </a>-  <%= band.album %>  -  <%= band.description %>  <span style="float: right;"><a href="/delete/<%= band.id %>"> Delete </a> </span></li>
+      <% end %>
+    </ul>
+  </div>
+<% else %>
+  <p> All of the bands were accidentally killed during a Dethklok concert accident.
+  It was totally metal.</p>
+<% end %>
+
+<form action="/add_band_toggle" method="get">
+  <button> Add a band </button>
+</form>

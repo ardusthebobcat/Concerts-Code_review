@@ -15,6 +15,4 @@ describe(Venue) do
     test_venue = Venue.create({:name => "Red Rocks Amphitheatre", :city => "Morrison", :state=> "co"})
     expect(test_venue.state()).to(eq("CO"))
   end
-
-
 end
