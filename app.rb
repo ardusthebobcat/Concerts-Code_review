@@ -41,6 +41,14 @@ get('/update_band/:id') do
   @band = Band.find(params.fetch("id"))
   erb(:band_update)
 end
+
+get('/delete/:id') do
+  delete_band = Band.find(params.fetch("id"))
+  delete_band.destroy()
+
+  @bands = Band.all()
+  erb(:bands)
+end
 #============ Update Routes ============#
 post('/update_band/:id/name') do
   @band = Band.find(params.fetch("id"))
@@ -62,3 +70,4 @@ post('/update_band/:id/album') do
 
   erb(:band_update)
 end
+#========== End Update Routes ==========#
